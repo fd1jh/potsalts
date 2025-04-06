@@ -1,0 +1,340 @@
+/* Общие стили */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background-color: #000;
+    color: #fff;
+    line-height: 1.6;
+}
+
+/* Шапка сайта */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 50px;
+    background-color: #111;
+    border-bottom: 1px solid #333;
+}
+
+.logo {
+    font-size: 28px; /* Увеличиваем размер логотипа */
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+.navbar button {
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 18px; /* Увеличиваем размер кнопок */
+    font-weight: 600;
+    cursor: pointer;
+    margin-left: 20px;
+    transition: color 0.3s ease;
+}
+
+.navbar button:hover {
+    color: #aaa;
+}
+
+/* Контент страниц */
+main {
+    padding: 50px 20px; /* Добавляем отступы сверху и снизу, а также справа и слева */
+    overflow: hidden; /* Убираем возможные артефакты анимации */
+}
+
+.page {
+    display: none;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    text-align: center; /* Выравниваем текст по центру */
+    max-width: 800px; /* Ограничиваем максимальную ширину контента */
+    margin: 0 auto; /* Центрируем контент по горизонтали */
+    padding: 0 20px; /* Добавляем внутренние отступы для текста */
+}
+
+.page.active {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+h1 {
+    font-size: 40px; /* Увеличиваем размер заголовков */
+    margin-bottom: 60px; /* Увеличиваем отступ после заголовка */
+}
+
+p {
+    font-size: 20px; /* Увеличиваем размер текста параграфов */
+    line-height: 1.8;
+    margin-bottom: 100px; /* Увеличиваем отступ между параграфами */
+}
+
+/* Стили для маркированных списков */
+ul {
+    list-style-type: disc; /* Включаем маркеры */
+    padding-left: 40px; /* Отступ слева для маркеров */
+}
+
+li {
+    font-size: 20px; /* Увеличиваем размер текста в списках */
+    margin-bottom: 45px; /* Увеличиваем расстояние между элементами списка (в 3 раза больше стандартного) */
+}
+
+/* Адаптация под мобильные устройства */
+@media (max-width: 768px) {
+    .header {
+        flex-direction: column;
+        padding: 20px;
+        text-align: center;
+    }
+
+    .navbar {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        margin-top: 10px;
+    }
+
+    .navbar button {
+        font-size: 16px; /* Уменьшаем размер кнопок */
+        margin: 0;
+    }
+
+    main {
+        padding: 20px 10px; /* Уменьшаем отступы для маленьких экранов */
+    }
+
+    h1 {
+        font-size: 32px; /* Уменьшаем размер заголовков */
+        margin-bottom: 40px; /* Уменьшаем отступ после заголовка */
+    }
+
+    p {
+        font-size: 18px; /* Уменьшаем размер текста параграфов */
+        margin-bottom: 60px; /* Уменьшаем отступ между параграфами */
+    }
+
+    li {
+        font-size: 18px; /* Уменьшаем размер текста в списках */
+        margin-bottom: 30px; /* Уменьшаем расстояние между элементами списка */
+    }
+}
+
+/* Общие стили */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background-color: #000;
+    color: #fff;
+    line-height: 1.6;
+    overflow-x: hidden; /* Убираем горизонтальную прокрутку */
+    position: relative;
+    z-index: 1;
+}
+
+/* Контейнер для кубов */
+.cube-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* Кубы остаются на фоне */
+    pointer-events: none; /* Игнорируем взаимодействие с кубами */
+    overflow: hidden;
+}
+
+/* Стили для кубов */
+.cube {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    border: 1px solid #fff;
+    transform-style: preserve-3d;
+    animation: rotate 10s linear infinite;
+}
+
+/* Создаем грани куба */
+.cube::before,
+.cube::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border: 1px solid #fff;
+    transform-origin: center;
+}
+
+.cube::before {
+    transform: rotateX(90deg);
+}
+
+.cube::after {
+    transform: rotateY(90deg);
+}
+
+/* Анимация вращения кубов */
+@keyframes rotate {
+    from {
+        transform: rotateX(0deg) rotateY(0deg);
+    }
+    to {
+        transform: rotateX(360deg) rotateY(360deg);
+    }
+}
+
+/* Размещение кубов */
+.cube:nth-child(1) {
+    top: 10%;
+    left: 20%;
+    animation-delay: 0s;
+}
+
+.cube:nth-child(2) {
+    top: 40%;
+    left: 70%;
+    animation-delay: 2s;
+}
+
+.cube:nth-child(3) {
+    top: 60%;
+    left: 30%;
+    animation-delay: 4s;
+}
+
+.cube:nth-child(4) {
+    top: 80%;
+    left: 50%;
+    animation-delay: 6s;
+}
+
+/* Шапка сайта */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 50px;
+    background-color: #111;
+    border-bottom: 1px solid #333;
+    position: relative;
+    z-index: 2;
+}
+
+/* Общие стили */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background-color: #000;
+    color: #fff;
+    line-height: 1.6;
+    overflow-x: hidden; /* Убираем горизонтальную прокрутку */
+    position: relative;
+    z-index: 1;
+}
+
+/* Стили для маркированных списков */
+ul {
+    list-style-type: none; /* Убираем стандартные маркеры */
+    padding-left: 40px; /* Отступ слева для маркеров */
+}
+
+li {
+    font-size: 20px; /* Размер текста в списках */
+    margin-bottom: 45px; /* Расстояние между элементами списка */
+    position: relative; /* Позволяет позиционировать кубик */
+    padding-left: 30px; /* Добавляем отступ слева для текста */
+}
+
+/* Создаем кубик как маркер */
+li::before {
+    content: ''; /* Создаем псевдоэлемент */
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%); /* Центрируем по вертикали */
+    width: 12px; /* Размер кубика */
+    height: 12px;
+    background-color: transparent; /* Прозрачный фон */
+    border: 2px solid #fff; /* Белые грани */
+    transform-style: preserve-3d; /* Включаем 3D-трансформацию */
+}
+
+/* Создаем грани кубика */
+li::before {
+    box-shadow: 
+        -2px -2px 0 2px #fff, /* Верхняя грань */
+        2px -2px 0 2px #fff, /* Правая грань */
+        -2px 2px 0 2px #fff, /* Левая грань */
+        2px 2px 0 2px #fff; /* Нижняя грань */
+}
+
+/* Остальные стили остаются без изменений */
+/* Стили для контейнера картинки-статистики */
+.stats-image-container {
+    margin-top: 80px; /* Отступ сверху для разделения текста и картинки */
+    text-align: center; /* Выравниваем содержимое по центру */
+    max-width: 800px; /* Ограничиваем максимальную ширину */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.stats-image {
+    max-width: 100%; /* Изображение занимает всю доступную ширину */
+    height: auto; /* Сохраняем пропорции изображения */
+    border: 2px solid #fff; /* Белая рамка вокруг изображения */
+    box-shadow: 0 4px 10px rgba(255, 255, 255, 0.1); /* Легкая тень для объема */
+    border-radius: 8px; /* Слегка скругляем углы */
+}
+
+/* Адаптация под мобильные устройства */
+@media (max-width: 768px) {
+    .stats-image-container {
+        margin-top: 40px; /* Уменьшаем отступ сверху */
+    }
+
+    .stats-image {
+        border-radius: 4px; /* Уменьшаем радиус скругления */
+    }
+}
+/* Стили для контейнера изображения */
+.image-container {
+    margin-top: 40px; /* Отступ сверху для разделения текста и изображения */
+    text-align: center; /* Выравниваем содержимое по центру */
+}
+
+.test-tube-image {
+    max-width: 20%; /* Изображение занимает всю доступную ширину */
+    height: auto; /* Сохраняем пропорции изображения */
+    border: 2px solid #fff; /* Белая рамка вокруг изображения */
+    box-shadow: 0 4px 10px rgba(255, 255, 255, 0.1); /* Легкая тень для объема */
+    border-radius: 8px; /* Слегка скругляем углы */
+}
+
+/* Адаптация под мобильные устройства */
+@media (max-width: 768px) {
+    .image-container {
+        margin-top: 20px; /* Уменьшаем отступ сверху */
+    }
+
+    .test-tube-image {
+        border-radius: 4px; /* Уменьшаем радиус скругления */
+    }
+}
